@@ -42,14 +42,14 @@ const eventsHandler = ( request, response, next ) => {
 
 const sendEvent = ( newFact ) => {
 	// Broadcast
-	if ( !newFact.channel || newFact?.channel === "*" ) {
+	if ( !newFact.channel || newFact.channel === "*" ) {
 		clients.forEach( client => client.response.write( `data: ${ JSON.stringify( newFact ) }\n\n` ) );
 		return
 	}
 
 	// Singlecast
 	clients.forEach( ( client ) => {
-		if ( newFact?.channel === client.id ) {
+		if ( newFact.channel === client.id ) {
 			client.response.write( `data: ${ JSON.stringify( newFact ) }\n\n` );
 		}
 	} );
