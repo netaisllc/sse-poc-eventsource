@@ -21,8 +21,8 @@ const eventsHandler = ( request, response, next ) => {
 	};
 	response.writeHead( 200, headers );
 
+	// Catch new clients up with store facts
 	const data = `data: ${ JSON.stringify( facts ) }\n\n`;
-
 	response.write( data );
 
 	const clientId = request.params.channel;
@@ -59,7 +59,11 @@ const sendEvent = ( newFact ) => {
 
 const addFact = async ( request, response, next ) => {
 	const newFact = request.body;
-	facts.push( newFact );
+
+	// Store facts for new clients
+	//facts.push( newFact );
+
+	// Echo to fact sender
 	response.json( newFact )
 	return sendEvent( newFact );
 }
