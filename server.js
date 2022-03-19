@@ -25,7 +25,7 @@ const eventsHandler = ( request, response, next ) => {
 
 	response.write( data );
 
-	const clientId = request.params?.channel;
+	const clientId = request.params.channel;
 
 	const newClient = {
 		id: clientId,
