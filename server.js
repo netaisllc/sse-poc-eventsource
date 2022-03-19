@@ -94,5 +94,5 @@ setInterval( function() {
 
 
 app.listen( PORT, () => {
-	console.log( `Facts Events service listening at http://localhost:${ PORT }` )
+	console.log( `Facts Events service listening pn port ${ PORT }` )
 } )
